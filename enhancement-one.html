@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Enhancement One | Jean Karst</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: Arial, Helvetica, sans-serif; background: #f4f6f8; color: #333; line-height: 1.65; }
+    header, footer { background: #1f3c5b; color: white; text-align: center; padding: 32px 20px; }
+    header h1 { margin: 0; }
+    nav { background: white; text-align: center; padding: 16px; box-shadow: 0 2px 5px rgba(0,0,0,.1); }
+    nav a { color: #1f3c5b; font-weight: bold; margin: 0 14px; }
+    main { max-width: 900px; margin: 32px auto; padding: 0 20px; }
+    section { background: white; padding: 28px; border-radius: 8px; margin-bottom: 24px; box-shadow: 0 2px 8px rgba(0,0,0,.08); }
+    h2 { color: #1f3c5b; }
+    li { margin: 8px 0; }
+    a { color: #174f83; }
+  </style>
+</head>
+<body>
+  <header><h1>Enhancement One</h1><p>Software Design and Engineering · CS 360 Weight Tracker</p></header>
+  <nav><a href="index.html">Home</a><a href="index.html#code-review">Code Review</a><a href="#narrative">Narrative</a><a href="#artifacts">Project Files</a></nav>
+  <main>
+    <section id="narrative">
+      <h2>Enhancement Narrative</h2>
+<p>The artifact I selected for the software design and engineering category is my CS 360 Weight Tracker Android application. I originally created this project in CS 360 as a mobile application that allows a user to create an account, log in, and keep track of daily weight entries. I selected it for my ePortfolio because it gave me a good opportunity to show more than just whether an application runs. It includes the user interface, data storage, account management, and several different activities that have to work together. For this enhancement, I worked on making the application more complete and more secure. I added stronger input validation, including checking that a date is not only in the correct format but is also an actual calendar date. I also improved the weight-entry functions so the user can add, view, edit, and delete entries. A confirmation message is shown before an entry is deleted, which helps prevent accidental data loss. I also added goal-weight settings and SMS alert options. One of the most important security improvements was changing the login process so that passwords are hashed instead of being stored as plain text in the database.</p>
+<p>This enhancement helped me make progress toward several of the course outcomes I planned to address. It especially supports the outcome involving the use of computing techniques, skills, and tools to create solutions that provide value. The application now has better validation, improved CRUD functions, additional user features, and a more organized connection between the interface and the SQLite database. It also supports the security outcome because I had to think more carefully about how user information is stored and protected. Password hashing was an important improvement because the original version stored passwords in plain text. I also had to think about user mistakes, not just programming errors, which led to the date validation and delete confirmation. At this point I do not think I need to change my overall outcome-coverage plan, but this enhancement gave me more security-related evidence than I originally expected.</p>
+<p>The process of enhancing the application also showed me how one change can affect other parts of a program. Some improvements worked right away, while others required troubleshooting. For example, when I added stronger date validation, Android Studio reported API-level compatibility errors because some of the date functions required a newer API than the project&#x27;s minimum version. I had to adjust the implementation so the application would still support the project&#x27;s API level. I also tested the application instead of assuming that the code changes worked. I created a new account, logged in, entered an invalid date to make sure it was rejected, added a valid weight entry, edited the entry, and then deleted it using the confirmation dialog. I also tested the goal-weight settings and enabled the SMS alert option. Working through these changes reminded me that improving software is not just about adding more code. It also involves testing, finding problems, making changes, and checking that existing features still work after the enhancement.</p>
+      <p><a href="artifacts/software-design/enhancement-one-narrative.docx">Download the submitted Word narrative</a></p>
+    </section>
+    <section id="artifacts">
+      <h2>Original and Enhanced Artifacts</h2>
+      <p>The Android Studio source projects are available side by side. The enhanced version improves date and weight validation and changes password storage from plain text to a SHA-256 digest. The original app already included weight entry management, delete confirmation, goal settings, and SMS behavior; the narrative describes how these features were tested as part of the enhancement.</p>
+      <ul>
+        <li><a href="https://github.com/jmk725/jmk725.github.io/tree/main/artifacts/software-design/original">View original Android project</a></li>
+        <li><a href="https://github.com/jmk725/jmk725.github.io/tree/main/artifacts/software-design/enhanced">View enhanced Android project</a></li>
+      </ul>
+      <p>Android Studio caches, generated builds, and machine-specific settings are excluded from these source folders.</p>
+    </section>
+    <section><h2>AI Use Acknowledgment</h2><p>I used OpenAI ChatGPT as a support tool while planning, troubleshooting, and drafting portions of this milestone. I reviewed the final content and tested the enhanced application myself.</p></section>
+  </main>
+  <footer>Jean Karst | Computer Science ePortfolio | 2026</footer>
+</body>
+</html>

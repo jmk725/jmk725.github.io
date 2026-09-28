@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- Grid of weight entries -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerWeights"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="12dp"
+        android:paddingTop="64dp"
+        android:clipToPadding="false" />
+
+    <!-- Notifications button (ON TOP of RecyclerView) -->
+    <Button
+        android:id="@+id/btnNotifications"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Notifications"
+        android:layout_margin="12dp"
+        android:layout_gravity="top|end"
+        android:elevation="8dp" />
+
+    <!-- Floating button to add new entry -->
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabAddWeight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:contentDescription="Add weight"
+        app:layout_anchor="@id/recyclerWeights"
+        app:layout_anchorGravity="bottom|end"
+        app:srcCompat="@android:drawable/ic_input_add" />
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
