@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Enhancement Three | Jean Karst</title>
+<style>
+* { box-sizing: border-box; }
+body { margin: 0; font-family: Arial, Helvetica, sans-serif; background: #f4f6f8; color: #333; line-height: 1.65; }
+header, footer { background: #1f3c5b; color: white; text-align: center; padding: 32px 20px; }
+header h1 { margin: 0; }
+nav { background: white; text-align: center; padding: 16px; box-shadow: 0 2px 5px rgba(0,0,0,.1); }
+nav a { color: #1f3c5b; font-weight: bold; margin: 6px 14px; display: inline-block; }
+main { max-width: 900px; margin: 32px auto; padding: 0 20px; }
+section { background: white; padding: 28px; border-radius: 8px; margin-bottom: 24px; box-shadow: 0 2px 8px rgba(0,0,0,.08); }
+h2, h3 { color: #1f3c5b; }
+li { margin: 8px 0; }
+a { color: #174f83; }
+img { max-width: 100%; height: auto; }
+</style>
+</head>
+<body>
+<header><h1>Enhancement Three</h1><p>Databases · CS 340 Grazioso Salvare Animal Shelter</p></header>
+<nav><a href="index.html">Home</a><a href="#artifacts">Project Files</a><a href="#narrative">Narrative</a><a href="#testing">Test Results</a></nav>
+<main>
+<section id="artifacts">
+<h2>Original and Enhanced Artifacts</h2>
+<p>This enhancement builds on the Python and MongoDB data-access component of the Grazioso Salvare animal shelter project. It improves record validation, searching, sorting, pagination, indexing, error handling, and safeguards for update and delete operations.</p>
+<ul>
+<li><a href="https://github.com/jmk725/CS-340/blob/main/CRUD_Python_Module%20%281%29.py">View original Python CRUD module</a></li>
+<li><a href="https://github.com/jmk725/CS-340/blob/main/AnimalShelterCRUD_Enhanced.py">View enhanced Python CRUD module</a></li>
+<li><a href="https://github.com/jmk725/CS-340">View CS 340 repository and original project materials</a></li>
+</ul>
+</section>
+<section id="narrative">
+<h2>Enhancement Narrative</h2>
+<h3>Artifact Description</h3>
+<p>The artifact I selected for the databases enhancement is the Grazioso Salvare Animal Shelter project that I originally developed in CS 340. The project uses Python and MongoDB to manage and retrieve animal shelter information for a rescue-oriented dashboard. Its Python data-access module provides create, read, update, and delete operations on animal records. I selected this artifact because it offered an opportunity to strengthen database access, data integrity, and the way information is retrieved and presented.</p>
+<h3>Justification and Enhancement</h3>
+<p>My original module established a MongoDB connection and supported basic CRUD operations. For the enhancement, I added validation for important animal fields, optional sorting, paginated results, and a dedicated search method that filters by animal type and breed. I also improved error reporting through Python logging and added a method to create indexes on commonly searched fields. These changes make the database access layer more deliberate and easier to extend.</p>
+<p>I added safeguards to reject empty update and delete queries so that an accidental unrestricted operation cannot be performed through those methods. The enhanced update method also rejects changes to the immutable MongoDB <code>_id</code> field and invalid update-field names. The search and read methods provide structured ways to retrieve records, while pagination can reduce the number of results returned in a single request.</p>
+<p>In MongoDB Compass, I created ascending indexes for <code>animal_type</code> and <code>breed</code> in the local <code>aac_demo.animals</code> collection. Explain Plan showed an IXSCAN using <code>animal_type_1</code> for a query returning three dog records. A separate query showed an IXSCAN using <code>breed_1</code>, although the specific breed searched returned no matching records. These results demonstrate that MongoDB could select the indexes; they do not establish a measurable speed improvement on a four-record dataset.</p>
+<h3>Course Outcomes</h3>
+<p>This enhancement demonstrates the application of computing practices to improve an existing data-driven system. I considered how indexing, query filtering, and pagination affect the organization and retrieval of data, and I strengthened the code's validation and safeguards to support a security-minded approach to database operations. The work also reflects the use of appropriate development tools and technologies, including Python, PyMongo, MongoDB Compass, and Visual Studio Code.</p>
+<h3>Reflection</h3>
+<p>One challenge was reconnecting the original CS 340 project to a local MongoDB environment. I located the original Python files, preserved a separate copy, installed PyMongo, and adjusted the connection settings to match the local development server. I then tested the enhanced module using a small demonstration collection. This process reinforced the importance of verifying the environment and testing changes incrementally rather than assuming that working source code will run without configuration.</p>
+<p>Testing also highlighted the difference between adding a feature and demonstrating that it works. I verified the connection, search results, sorted and paginated output, rejection of invalid records, and protection against an empty delete query. I learned that query plans provide stronger evidence of index usage than simply seeing an index listed in the database. The enhancement remains a standalone database module; the original dashboard has not yet been adapted or retested against its new default pagination behavior.</p>
+<h3>AI Use Acknowledgment</h3>
+<p>Generative AI assisted with organizing the enhancement plan, drafting and revising code, troubleshooting the development process, and preparing this written narrative. I ran the commands in my local environment and reviewed the observed test results before publishing the enhanced module.</p>
+</section>
+<section id="testing">
+<h2>Test Results</h2>
+<p>The enhanced module was tested locally against <code>aac_demo.animals</code>, which contained four records. The following checks were observed:</p>
+<ul>
+<li>MongoDB connection succeeded and returned four records.</li>
+<li>Searching for <code>animal_type='Dog'</code> returned three records.</li>
+<li>Sorting by animal type and requesting page 1 with a page size of 2 returned <code>['Cat', 'Dog']</code>.</li>
+<li>An attempted insertion with blank animal type and breed was rejected (<code>False</code>).</li>
+<li>An empty delete query returned 0, and all four records remained.</li>
+<li>MongoDB Explain Plan showed IXSCAN for both <code>animal_type_1</code> and <code>breed_1</code>.</li>
+</ul>
+<p>These are targeted functional checks, not a comprehensive automated test suite or a benchmark. Full dashboard integration and performance testing with a larger dataset are potential future improvements.</p>
+</section>
+</main>
+<footer>Jean Karst | Computer Science ePortfolio | 2026</footer>
+</body>
+</html>
